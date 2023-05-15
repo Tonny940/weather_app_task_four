@@ -1,11 +1,15 @@
 from weather_app.api import api
 
 cities = ['New York', 'California', 'Amsterdam', 'London', 'San Diego']
-city_weather_info = []
 
-for city in cities:
-    data = api.get_weather_data(city)
-    city_weather_info.append(data)
+
+def extract_weather_info(weather):
+    city_weather_info = []
+    for city in cities:
+        data = api.get_weather_data(city)
+        city_weather_info.append(data)
+
+    return city_weather_info
 
 
 def min_average_temp(data_info):
