@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% block content %}
+    <section class="vh-100" style="background-color: #4B515D;">
+
+        <div class="container py-5 h-100">
+
+
+            <div class="row d-flex justify-content-center align-items-center h-100" id="content-block">
+
+                <div class="card" style="color: #4B515D; border-radius: 35px;">
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search" action="/submit" method="post">
+                            <input name="city" class="form-control me-2" type="search"
+                                   placeholder="Enter valid city name"
+                                   aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Find your city</button>
+                        </form>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <h3 class="text-field">Here is locations</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-6 col-xl-4" id="block-section">
+                    {% for city in context.locations %}
+
+                        <div class="card" style="color: #4B515D; border-radius: 35px;">
+                            <div class="card-body">
+
+                                <div class="d-flex">
+                                    <h3 class="city">{{ city.city }}</h3>
+                                </div>
+
+                                <div class="d-flex flex-column text-center mt-5 mb-4">
+                                    <h6>Temperature</h6>
+                                    <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{ city.temp }}°C </h6>
+                                    <span class="small" style="color: #868B94">{{ city.clouds }}</span>
+                                </div>
+
+                                <div class="d-flex flex-column text-center mt-5 mb-4">
+                                    <h6>Humidity</h6>
+                                    <h6 class="display-4 mb-0 font-weight-bold"
+                                        style="color: #1C2331;"> {{ city.humidity }} % </h6>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        {#        </div>#}
+    </section>
+{% endblock %}
